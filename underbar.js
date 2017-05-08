@@ -81,7 +81,13 @@ const reduce = function(obj, callback=identity, initialValue) {
 // Return true if the object contains the target.
 const contains = function(obj, target) {
   return reduce(obj, (wasFound, item) => {
-    return wasFound || item === target;
+    //console.log(item);console.log(target);
+    if(typeof item === 'object'){
+      return wasFound || JSON.stringify(item) === JSON.stringify(target);
+    }else{
+      return wasFound || item === target;
+    }
+    
   }, false);
 };
 

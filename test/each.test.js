@@ -39,5 +39,19 @@ describe('each()', () => {
     });
     expect(count).toBe(3);
   });
+
+  it('customtest for checking individual value of object not to equal next key of object', () => {
+    const obj = {
+      name: 'Calvin',
+      age: 6,
+      occupation: 'student'
+    };
+    let count = 0;
+    _.each(obj, function(value, key, iteratedObj) {
+      expect(value).not.toEqual(iteratedObj[key+1]);
+      count += 1;
+    });
+    expect(obj.name).not.toBe('xyz');
+  });
 });
 

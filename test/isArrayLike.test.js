@@ -18,4 +18,16 @@ describe('isArrayLike()', () => {
     };
     expect(_.isArrayLike(nonArrayLikeObj)).toBe(false);
   });
+
+  it('returns true for an empty array', () => {
+    expect(_.isArrayLike([])).toBe(true);
+  });
+
+  it('returns false for an array-like object but typeof length is not a number', () => {
+    const arrayLikeObj = {
+      length: 'foo'
+    };
+    expect(_.isArrayLike(arrayLikeObj)).not.toBe(true);
+  });
+
 });

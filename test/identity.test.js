@@ -20,4 +20,13 @@ describe('identity()', () => {
     };
     expect(_.identity(val)).toBe(val);
   });
+
+  it('returns identified if given identified', () => {
+    expect(_.identity(undefined)).toBe(undefined);
+  });
+
+  it('returns arraylength if given arraylength', () => {
+    const val = [1, 2, 3];
+    expect(_.identity(val.length)).toBe(val.length);
+  });
 });

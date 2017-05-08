@@ -23,4 +23,27 @@ describe('filter()', () => {
     const abilityScores = _.filter(characterAttributes, (value) => !isNaN(value));
     expect(abilityScores).toEqual([4, 7, 10, 16, 5, 4]);
   });
+
+  it('filters an array with only object', () => {
+    const characterAttributes = [
+      {name: 'Thokul Mongothsbeard'},
+      'honorific',
+      {race: 'human'},
+      'druid',
+      4,
+      7,
+      {dexterity: 10},
+      'intelligence',
+      'wisdom',
+      {charisma: 4}
+    ];
+    const abilityScores = _.filter(characterAttributes, (value) => typeof value === 'object');
+    expect(abilityScores).toEqual([{name: 'Thokul Mongothsbeard'},{race: 'human'},{dexterity: 10},{charisma: 4}]);
+  });
+
+  it('filters an array to greter than 7', () => {
+    const nums = [2, 4, 5, 6, 7, 8, 10, 11];
+    expect(_.filter(nums, num => num >= 7)).toEqual([7, 8, 10, 11]);
+  });
+
 });

@@ -26,4 +26,13 @@ describe('indexOf()', () => {
     expect(_.indexOf(arr, 'bar', 2)).toBe(3);
   });
 
+  it('returns -1 for a blank array', () => {
+    const arr = [];
+    expect(_.indexOf(arr, 'bar')).toBe(-1);
+  });
+
+  it('returns -1 if value is not present after searching from the given offset', () => {
+    const arr = ['foo', 'foo', 'baz', 'bar', 'bar'];
+    expect(_.indexOf(arr, 'foo', 2)).toBe(-1);
+  });
 });
